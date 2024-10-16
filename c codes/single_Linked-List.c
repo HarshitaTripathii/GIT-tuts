@@ -5,6 +5,7 @@ struct node
     int data;
     struct node *link;
 };
+struct node *head;
 void add_pos(struct node *head, int data1, int pos)
 {
     struct node *ptr = NULL;
@@ -119,7 +120,17 @@ void insertionE(struct node *head)
         ptr->link = newNode;
     }
 }
-struct node *insertionB(struct node *head, int data)
+// struct node *insertionB(struct node *head, int data)
+// {
+//     struct node *newN = NULL;
+//     newN = (struct node *)malloc(sizeof(struct node));
+//     newN->data = data;
+//     newN->link = NULL;
+//     newN->link = head;
+//     head = newN;
+//     return head;
+// }
+void insertionB(struct node *head, int data)
 {
     struct node *newN = NULL;
     newN = (struct node *)malloc(sizeof(struct node));
@@ -127,7 +138,7 @@ struct node *insertionB(struct node *head, int data)
     newN->link = NULL;
     newN->link = head;
     head = newN;
-    return head;
+    
 }
 
 int countNode(struct node *head)
@@ -194,9 +205,10 @@ void main()
     // counting no.of nodes present, expected output is 3.
 
     //   added new node at the end
-    insertionE(head);
-    head = insertionB(head, 55);
-    // printf("%d\n", head->data);
+    // insertionE(head);
+    // head = insertionB(head, 55);
+    insertionB(head, 55);
+    printf("%d\n", head->data);
 
     add_pos(head, 90, 4);
     head = delete1(head);
