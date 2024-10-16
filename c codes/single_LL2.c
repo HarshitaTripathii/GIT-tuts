@@ -5,6 +5,7 @@ struct node
     int data;
     struct node *link;
 };
+struct node *head = NULL;
 void add_pos(struct node *head, int data1, int pos)
 {
     struct node *ptr = NULL;
@@ -49,7 +50,7 @@ void delete_pos(struct node **head, int pos)
         ptr1 = NULL;
     }
 }
-struct node *delete1(struct node *head)
+struct node *deleteBegin(struct node *head)
 {
     struct node *temp = NULL;
     temp = head;
@@ -99,7 +100,7 @@ void print(struct node *head)
         }
     }
 }
-void insertionE(struct node *head)
+void insertionEnd(struct node *head)
 {
     if (head == NULL)
     {
@@ -119,7 +120,20 @@ void insertionE(struct node *head)
         ptr->link = newNode;
     }
 }
-struct node *insertionB(struct node *head, int data)
+// function below is used when head is not declared globally
+// struct node *insertionB(struct node *head, int data)
+// {
+//     struct node *newN = NULL;
+//     newN = (struct node *)malloc(sizeof(struct node));
+//     newN->data = data;
+//     newN->link = NULL;
+//     newN->link = head;
+//     head = newN;
+//     return head;
+// }
+
+// function below is used when head is defined globally, no need to give head in argument, giving struct node * head in parameter
+void insertionBegin( int data)
 {
     struct node *newN = NULL;
     newN = (struct node *)malloc(sizeof(struct node));
@@ -127,7 +141,7 @@ struct node *insertionB(struct node *head, int data)
     newN->link = NULL;
     newN->link = head;
     head = newN;
-    return head;
+    // return head;
 }
 
 int countNode(struct node *head)
@@ -170,43 +184,14 @@ struct node *deleteAll(struct node *head)
 
 void main()
 {
-    // node creation
-    struct node *head = NULL;
-    head = (struct node *)malloc((sizeof(struct node)));
-    head->data = 65;
-    head->link = NULL;
-
-    // creating single linked list using another pointer current
-    struct node *current = NULL;
-    current = (struct node *)malloc((sizeof(struct node)));
-    current->data = 75;
-    current->link = NULL;
-    head->link = current; // 2 nodes have been created
+   // added new node at the end
+    // insertionE(head);
+    insertionBegin(55);
+    insertionBegin( 65);
+     insertionBegin( 75);
+     insertionBegin( 85);
+     insertionBegin( 95);
     // printf("%d\n", head->data);
-    // printf("%d\n", current->data);
-
-    // creating 3rd node
-    current = (struct node *)malloc((sizeof(struct node)));
-    current->data = 85;
-    current->link = NULL;
-    head->link->link = current;
-
-    // counting no.of nodes present, expected output is 3.
-
-    //   added new node at the end
-    insertionE(head);
-    head = insertionB(head, 55);
-    // printf("%d\n", head->data);
-
-    add_pos(head, 90, 4);
-    head = delete1(head);
-    //   deleteEnd2Ptr(head);
-    delelteEnd1Ptr(head);
-    delete_pos(&head, 3);
-    // head = deleteAll(head);
-    int countN = countNode(head);
-    printf("%d\n", countN);
-
-    //   printing all the data of nodes
+   //  printing all the data of nodes
     print(head);
 }
