@@ -12,8 +12,8 @@ int isEmpty()
         return 0;
     }
 }
-int isFull(){
-    if(b==MAX-1){
+int isFull(int n){
+    if(b==n-1){
         return 1;
     }
     else{
@@ -21,7 +21,7 @@ int isFull(){
     }
 }
 void enque(int n,int a[],int data){
-    if(isFull()){
+    if(isFull(n)){
         printf("Queue is Full\n");
         return;
     }
@@ -40,7 +40,7 @@ void deque(){
     }
 }
 
-void print(int a[])
+void print(int n,int a[])
 {
     if(isEmpty()){
         printf("Queue is Empty\n");
@@ -50,7 +50,7 @@ void print(int a[])
 
     
     printf("queue elements are \n");
-    for(int i=f+1;i<MAX;i++ ){
+    for(int i=f+1;i<n;i++ ){
         
         printf("%d\n", a[i]);
     }
@@ -59,22 +59,40 @@ void print(int a[])
 
 
 void main(){
-    int e;
-    for(int i=0;i<MAX;i++)
+    int e,n,ch;
+    printf("1 : insertion\n 2: deletion \n 3 : display\n");
+    scanf("%d", &ch);
+    switch(ch)
     {
-        printf("enter element : \n");
-        scanf("%d", &e);
-        enque(MAX, que_array,e);
-    }
-    print(que_array);
-    enque(MAX, que_array,e);
-    print(que_array);
+        case 1:
+        printf("enter size of queue\n");
+        scanf("%d", &n);ḷ̥
+        for(int i=0;i<n;i++)
+        {
+            printf("enter element : \n");
+            scanf("%d", &e);
+            enque(n, que_array,e);
+        }
+        break;
 
-    // deque();
-    // deque();
-    // deque();
-    // deque();
-    // print(que_array);
+        case 2:
+        deque();
+        break;
+
+        case 3:
+        print(n,que_array);
+        break;
+
+        default:
+        printf("enter valid choice, 1 , 2 , 3 :")
+        break;
+    
+
+    }
+    
+    
+
+    
 
 
 }
