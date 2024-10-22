@@ -56,8 +56,6 @@ void print(int n,int a[])
     }
     }
 }
-
-
 void main(){
     int e,n,ch;
     printf("1 : insertion\n 2: deletion \n 3 : display\n");
@@ -89,10 +87,4 @@ void main(){
     
 
     }
-    
-    
-
-    
-
-
 }
