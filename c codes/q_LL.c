@@ -27,14 +27,51 @@ void enque(int data)
         rear=ptr;
         rear->link=NULL;
     }
-
-
 }
+
+void deque()
+{
+    if(front == NULL)
+    {
+        printf("Underflow\n");
+    }
+    else
+    {
+        struct node * ptr=(struct node*)malloc(sizeof(struct node));
+        ptr=front;
+        front=front->link;
+        free(ptr);
+        ptr=NULL;
+}
+}
+void print()
+{
+    if(front==NULL)
+    {
+        printf("Underflow\n");
+    }
+    else
+    {
+        struct node * ptr=NULL;
+        ptr=front;
+        while(ptr!=NULL)
+        {
+            printf("%d\n", ptr->data);
+            ptr=ptr->link;
+        }
+
+    }
+}
+
+
 void main(){
     enque(12);
     enque(24);
     enque(36);
+        deque();
+
     enque(48);
-    printf("%d", front->data);
-    printf("%d", rear->data);
+    print();
+//     printf("%d", front->data);
+//     printf("%d", rear->data);
 }
